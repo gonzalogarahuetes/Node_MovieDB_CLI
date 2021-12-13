@@ -22,8 +22,9 @@ program
     myParseInt
   )
   .option("-s --save", "Save the fetched data into a JSON file")
+  .option("-l --local", "Read the data from your local JSON file")
   .action((options) => {
-    if (options.page) getPersons(options.page, options.save);
+    if (options.page) getPersons(options.page, options.save, options.local);
   });
 
 program
@@ -40,13 +41,14 @@ program
   .option("-p, --popular", "Fetch the most popular movies")
   .option("-n, --now-playing", "Fetch the movies that are being played now")
   .option("-s --save", "Save the fetched data into a JSON file")
+  .option("-l --local", "Read the data from your local JSON file")
   .requiredOption(
     "--page <number>",
     "The page of movies data results to fetch",
     myParseInt
   )
   .action((options) => {
-    getMovies(options.page, options.nowPlaying, options.save);
+    getMovies(options.page, options.nowPlaying, options.save, options.local);
   });
 
 program
